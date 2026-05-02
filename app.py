@@ -1142,8 +1142,8 @@ def generate_reports(df, insights, health_score, health_details, suggestions, cl
     st.markdown("## 💾 Download Center")
 
     c1, c2, c3, c4 = st.columns(4)
-    df_clean = st.session_state.df_clean or df
-    df_ml    = st.session_state.df_ml or df
+    df_clean = st.session_state.df_clean if st.session_state.df_clean is not None else df
+    df_ml    = st.session_state.df_ml    if st.session_state.df_ml    is not None else df
 
     with c1:
         st.markdown("**🧼 Cleaned Dataset**")
@@ -1406,7 +1406,7 @@ def main():
 </div>""", unsafe_allow_html=True)
         return
 
-    df_work = st.session_state.df_clean or df
+    df_work = st.session_state.df_clean if st.session_state.df_clean is not None else df
 
     # ── Pages ───────────────────────────────────────────────────────────────
 
